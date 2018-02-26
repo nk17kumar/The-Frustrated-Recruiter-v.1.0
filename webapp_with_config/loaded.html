@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Tada</title>
+  
+  
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{overflow: hidden;}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-300px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-300px; opacity:0 } 
+  to{ bottom:0px; opacity:1 }
+}
+
+@-webkit-keyframes animateright {
+  from { left:1000px; top:-300px; opacity:0 } 
+  to { left:700px; top:-200px; opacity:0.6 }
+}
+
+@keyframes animateright { 
+  from { left:1000px; top:-300px; opacity:0 } 
+  to { left:700px; top:-200px; opacity:0.6 }
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.body{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: auto;
+	height: auto;
+	background-color: #366b69;
+	background-image: url("http://localhost:8081/images/t2.jpg");
+	background-size: cover;
+	-webkit-filter: blur(3.5px);
+	z-index: -1;
+}
+
+.grad{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: auto;
+	height: auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(37, 183, 196,0)), color-stop(100%,rgba(37, 183, 196,.65))); /* Chrome,Safari4+ */
+	z-index: 0;
+	opacity: 0.7;
+}
+#imgs{
+
+position:absolute;
+height: 800px;
+width: 800px;
+top:-200px;
+left:700px;
+opacity:0.6;
+z-index: 1;
+-webkit-animation-name: animateright;
+-webkit-animation-duration: 1s;
+animation-name: animateright;
+animation-duration: 1.5s;
+
+}
+.header{
+	position: absolute;
+	top: calc(50% + 320px);
+	left: calc(50% - 280px);
+	z-index: 2;
+}
+
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 65px;
+	font-weight: 300;
+}
+
+.header div span{
+	color: #25c481 !important;
+}
+.ntext span {
+
+color: #25c481 !important;
+
+}
+
+.login{
+	position: absolute;
+	top: calc(50% + 300px);
+	left: calc(50% - 50px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.link{
+	width: 280px;
+	height: 60px;
+	background: #25c481;
+	border: 1px solid #25c481;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	font-family: 'Exo', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 6px;
+	text-align:center;
+	position:absolute;
+	z-index:2;
+}
+
+.link2{
+	width: 100px;
+	height: 30px;
+	background: #25c481;
+	border: 1px solid #25c481;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	font-family: 'Exo', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 20px;
+	margin-left: 20px;
+	text-align:center;
+	position:absolute;
+	z-index:2;
+}
+
+.ntext{
+color: white;
+	font-family: 'Exo', sans-serif;
+	font-size: 26px;
+	font-weight: 400;
+
+
+}
+
+.link:hover{
+	opacity: 0.8;
+}
+
+.link:active{
+	opacity: 0.6;
+}
+
+.link:focus{
+	outline: none;
+}
+.link a{
+text-align:center;
+color:white;
+text-decoration:none;
+}
+
+.link2:hover{
+	opacity: 0.8;
+}
+
+.link2:active{
+	opacity: 0.6;
+}
+
+.link2:focus{
+	outline: none;
+}
+.link2 a{
+text-align:center;
+color:white;
+text-decoration:none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+.login input[type=text]{
+	margin-bottom: 7px;
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script>
+var folder = "http://localhost:8081/images/";
+
+$(document).ready(function(){
+	document.getElementById("imgs").style.background-image=folder+'2.png';
+});
+</script>
+</head>
+
+<body>
+  <div class="body"></div>
+		<div class="grad"></div>
+	
+		<div id="imgs"><img src="http://localhost:8081/images/music/2.png" height="750px" width="800px"></div>
+		<div class="animate-bottom">
+		<div class="header">
+			<div>Ta<span>da!</span></div>
+		</div>
+		<br>
+		
+		<div class="login">
+		<div class="ntext">TextPool thinks that this corpus is about music.</div>
+		<br>
+		<br>
+		Am I correct?<br><br>
+		<input type="radio" name="yesno" onclick="document.getElementById('usercorpus').style.display='none'; document.getElementById('usercorpus').value='yes';" checked="checked"/> Yes
+		<input type="radio" name="yesno" onclick="document.getElementById('usercorpus').style.display='inline'; document.getElementById('usercorpus').value='';"/>No
+		<br>
+		<br>
+		<form action="http://localhost:8081/corpus_type" method="GET">
+			<input id="usercorpus" type="text" name="corpustype" placeholder="Enter the corpus type" style="display:none;" value="yes"/>
+			<br><br>
+			<input class="link" type="submit" value="Click here to see Analysis">
+		</form><br><br>
+			
+		</div>
+		</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Sentiment Analysis</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+<style>
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-80px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-80px; opacity:0 } 
+  to{ bottom:0px; opacity:1 }
+}
+
+
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+  padding-bottom: 20px;
+
+}
+.tbl-header{
+  background-color: rgba(37, 196, 129,0.8);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(37, 196, 129,0.5);
+  background-color: rgba(255,255,255,0.2);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 650;
+  font-size: 15px;
+  color: #fff;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background-image: url("http://localhost:8081/images/t4.jpg");
+  font-family: 'Roboto', sans-serif;
+  background-size: cover;
+}
+section{
+  margin: 50px;
+
+}
+
+
+/* follow me template */
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+#chart_div
+{
+margin-top: 20px;
+margin-bottom:90px;
+height:300px;
+width: 500px;
+margin-left: 340px;
+
+}
+.chart_heading
+{
+font-family: 'Exo', sans-serif;
+font-weight: 200;
+text-align: center;
+color: #fff;
+margin-top: 90px;
+font-size: 30px;
+}
+
+.chart_heading span
+{
+color: #25c481 !important;
+}
+
+#Ultra
+{
+
+margin-left:540px;
+margin-top:20px;
+
+}
+#he1{
+font-size:20px;
+color:white;
+}
+</style>
+ 
+ <script>
+ // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+ </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+var options = {
+          title: 'Comparison',
+		  chartArea: {width: '50%',height: '60%'}
+        };
+      function drawChart() {
+var data = google.visualization.arrayToDataTable([
+['Sentiment','Number'],
+['Positive',0],['Negative',1],['Neutral',1]]);
+var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+chart.draw(data, options);}</script>
+
+</head>
+
+<body>
+  <section class="animate-bottom">
+  <!--for demo wrap-->
+  <div class="chart_heading">Sentiment <span>Scores</span></div>
+  <br>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+		  <th>File Name</th>
+		  <th>Sentence_id</th>
+          <th>Sentence</th>
+		  <th>Sentiment polarity</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+<tr><td>textbox_040717.txt</td><td>1</td><td>I like playing guitar and piano.</td><td>0.00</td></tr>
+<tr><td>textbox_040717.txt</td><td>2</td><td> I am passionate about music.</td><td>-0.05</td></tr>
+</tbody>
+    </table>
+  </div>
+  <div class="chart_heading">Sentiment-Score <span>Comparison</span></div>
+  <div id="chart_div"></div>
+  
+</section>
+
+
+<!-- follow me template -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Sentiment Analysis</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+      <link rel="stylesheet" href="css/style.css">
+<style>
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-80px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-80px; opacity:0 }
+  to{ bottom:0px; opacity:1 }
+}
+
+
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+  padding-bottom: 20px;
+
+}
+.tbl-header{
+  background-color: rgba(37, 196, 129,0.8);
+ }
+.tbl-content{
+  height:270px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(37, 196, 129,0.5);
+  background-color: rgba(255,255,255,0.2);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 650;
+  font-size: 15px;
+  color: #fff;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background-image: url("/home/nk17kumar/textpool3/webapp_with_config/public/images/t4.jpg");
+  font-family: 'Roboto', sans-serif;
+  background-size: cover;
+  background-color: black;
+}
+section{
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 10px;
+}
+
+
+/* follow me template */
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+#chart_div
+{
+margin-top: 10px;
+margin-bottom:10px;
+
+}
+.chart_heading
+{
+font-family: 'Exo', sans-serif;
+font-weight: 200;
+text-align: center;
+color: #fff;
+margin-top: 10px;
+font-size: 30px;
+}
+
+.chart_heading span
+{
+color: #25c481 !important;
+}
+
+#Ultra
+{
+
+margin-left:540px;
+margin-top:10px;
+
+}
+#he1{
+font-size:20px;
+color:white;
+}
+</style>
+
+ <script>
+ // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+ </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawLineStyles);
+var options1 = {
+		chartArea: {width: '70%'},
+        hAxis: {
+          title: 'Date'
+        },
+        vAxis: {
+          title: 'Average Sentiment'
+        }
+      };
+function drawLineStyles() {
+var data = new google.visualization.DataTable();
+data.addColumn('date', 'Date');
+data.addColumn('number','BBQ');
+data.addColumn('number','HungryHouse');
+data.addColumn('number','PizzaKing');
+data.addRows([[new Date(2017,06,10),-0.05,0.11,-0.06],[new Date(2017,06,11),0.38,-0.38,0.31],[new Date(2017,06,12),-0.23,0.18,-0.01]]);
+var chart1 = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart1.draw(data, options1);
+    }
+</script>
+<script>
+google.charts.load('current', {packages: ['corechart', 'bar']});
+
+var flag=1;
+google.charts.setOnLoadCallback(drawBasic);
+    function run() {
+
+		flag=document.getElementById("Ultra").value;
+		google.charts.setOnLoadCallback(drawBasic);
+    }
+
+var options = {
+        title: 'Sentiment scores of Restaurant',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Sentiment score',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Category'
+        }
+      };
+
+function drawBasic() {
+var data1=google.visualization.arrayToDataTable([
+['Category','Sentiment Score',],['food',0.16],['ambience',-0.35],['service',-0.24]
+]);
+var data2=google.visualization.arrayToDataTable([
+['Category','Sentiment Score',],['food',0.15],['ambience',0.50],['service',0.16]
+]);
+var data3=google.visualization.arrayToDataTable([
+['Category','Sentiment Score',],['food',-0.35],['ambience',-0.35],['service',-0.24]
+]);
+var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
+
+if(flag==1) chart.draw(data1, options);
+if(flag==2) chart.draw(data2, options);
+if(flag==3) chart.draw(data3, options);
+}
+</script>
+</head>
+
+<body>
+  <section class="animate-bottom">
+  <!--for demo wrap-->
+  <div class="chart_heading">Sentiment <span>Scores</span></div>
+  <br>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+		  <th>Restaurant</th>
+		  <th>Date</th>
+		  <th>Sentence_id</th>
+          <th>Sentence</th>
+          <th>Category</th>
+		  <th>Sentiment polarity</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+<tr><td>BBQ</td><td>10-06-17</td><td>1</td><td>A decent fine dining restaurant but needs to work alot on the Non-Veg food...</td><td>food, service</td><td>0.29</td></tr>
+<tr><td>BBQ</td><td>10-06-17</td><td>2</td><td> My stop was kopper kadai , Exhibiting in their infrastructure the conservative use of aluminium in India.</td><td>service</td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>10-06-17</td><td>3</td><td>  Ambience was bad.</td><td>ambience</td><td>-0.70</td></tr>
+<tr><td>BBQ</td><td>10-06-17</td><td>4</td><td> Don't recommend it.</td><td>service</td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>10-06-17</td><td>5</td><td> music was superb.</td><td></td><td>1.00</td></tr>
+<tr><td>BBQ</td><td>10-06-17</td><td>6</td><td> I hated the service too.</td><td>service</td><td>-0.90</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>1</td><td>It was a special dinner and sudden planned.</td><td></td><td>0.18</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>2</td><td>as we entered i had a feel that it will be good experience.</td><td>food, ambience, service</td><td>0.70</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>3</td><td>decor n ambience was good.</td><td>food, ambience, service</td><td>0.70</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>4</td><td>we ordered Aam gupshup n jugalbandi jugalbandi was good.</td><td>food, service</td><td>0.70</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>5</td><td>aam gupshup was just OK.</td><td></td><td>0.50</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>6</td><td>now the most awaited dish of dinner n as told by it will be too good ordered matkeyki chap which was really good yummy n mutton cooked to perfection n after a long time had that good mutton.</td><td>food, service</td><td>0.51</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>7</td><td>lehsooni tawa murg was ok.</td><td></td><td>0.50</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>8</td><td>galouti gilafi was good in breads.</td><td>food, service</td><td>0.70</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>9</td><td>Sunrise mojito was good.</td><td>food, service</td><td>0.70</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>10</td><td>n the most important their staff is very courteous n caring.</td><td>service</td><td>0.56</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>11</td><td>really nice food n decor n staff.</td><td>food</td><td>0.60</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>12</td><td>sureto be recommended.</td><td>service</td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>13</td><td>  Price range makes it good for families and groups(pocket friendly).</td><td>food, service</td><td>0.54</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>14</td><td> ...</td><td></td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>15</td><td>  amazing interior.</td><td></td><td>0.60</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>16</td><td> .....</td><td></td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>17</td><td>  You will really like this place...</td><td>ambience, service</td><td>0.20</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>18</td><td>  Highly recommended...</td><td>service</td><td>0.16</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>19</td><td> must try this outlet.</td><td></td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>20</td><td> Bad place as far as the ambience & space is concerned.</td><td>ambience, service</td><td>-0.30</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>21</td><td> They have huge LED screen on which they were playing IPL.</td><td></td><td>0.40</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>22</td><td> Nice lavish space ensure you get your own space & can enjoy DJ + Match.</td><td>food, ambience, service</td><td>0.53</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>23</td><td> Food quality was nothing less than good.</td><td>food, ambience, service</td><td>0.27</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>24</td><td> It's a good try specially if you are an IPL lover.</td><td>food, service</td><td>0.53</td></tr>
+<tr><td>BBQ</td><td>11-06-17</td><td>25</td><td> Only suggusion to management- your LED screen is too bright & causes pain in eyes on long viewing.</td><td>service</td><td>0.22</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>1</td><td>A decent fine dining restaurant but needs to work alot on the Non-Veg food...</td><td>food, service</td><td>0.29</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>2</td><td> Atmosphere was not good.</td><td>food, ambience, service</td><td>-0.35</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>3</td><td> Don't recommend it.</td><td>service</td><td>0.00</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>4</td><td> music was dull and boring.</td><td>food</td><td>-0.65</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>5</td><td> I hated the service too.</td><td>service</td><td>-0.90</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>6</td><td> Food was bad though.</td><td>food</td><td>-0.70</td></tr>
+<tr><td>BBQ</td><td>12-06-17</td><td>7</td><td> I loved the cake.</td><td></td><td>0.70</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>1</td><td>We ordered two time never satisfied first of all they don't know how to treat customers.</td><td>service</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>2</td><td>food quality is worst.</td><td>food, ambience, service</td><td>-1.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>3</td><td>rates are too high according to food.</td><td>food</td><td>0.16</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>4</td><td>there is 300 items available in menue.</td><td>service</td><td>0.40</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>5</td><td>but they don't serve all these .</td><td></td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>6</td><td>we feel waist of money.</td><td>ambience</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>7</td><td>they serve local coldrink and ice cream.</td><td>food, ambience</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>8</td><td> The food was fresh, properly prepared and a great value for the price.</td><td>food, service</td><td>0.37</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>9</td><td> Interesting menu, wonderful meal.</td><td>food</td><td>0.75</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>10</td><td> Service was exactly on time.</td><td>service</td><td>0.25</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>11</td><td> we highly recommend it.</td><td>service</td><td>0.16</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>12</td><td> While the place is small, the courteous staff, tasteful decorations, instrumental music from a good 5.</td><td>food, ambience, service</td><td>0.35</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>13</td><td>1 system at the right volume, 2 A/Cs running to keep the temperature just right; drinking water chilled at just the right temperature, genuine heinz tomato ketchup, good quality tissues, nice cutlery, courteous patient staff, (our group sat at  table 1, moved to table 2, came back to table 1 ...</td><td>food, ambience, service</td><td>0.39</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>14</td><td> there are a lot of small touches that show that is is an educated aware and smart professional running the show.</td><td>ambience, service</td><td>0.08</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>15</td><td> Tremendous potential.</td><td></td><td>0.17</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>16</td><td>  Next - after effects of eating - there weren't any - not even a heavy stomach the next morning.</td><td>food, ambience</td><td>-0.07</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>17</td><td> Says a lot, doesn't it?</td><td></td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>18</td><td>  The cooking focuses on the challenging goals of managing both health and status - so I personally won't mind if they raised their prices by another 20%.</td><td>service</td><td>0.25</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>19</td><td> Everything felt fresh; I could tell that the ingredients were fresh and definitely better than Dumbinoes.</td><td>food, service</td><td>0.37</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>20</td><td>  They would have been minting money if the location was someplace other than the underpopulated Greater Noida.</td><td></td><td>0.19</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>21</td><td>  The food itself: Veg Salad - #1  - tasted great; soup and pasta were good too; the garlic bread was pretty decent (though needed to be a little bit more garlicky to live up to its name).</td><td>food, ambience, service</td><td>0.34</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>22</td><td> There were lot of things which we didn't try but looked very appetizing (delivered to other tables).</td><td>food, ambience</td><td>0.07</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>23</td><td>  The negatives - sure there are quite a few; but for a smart professional some of these should be easy to handle 1)</td><td></td><td>0.21</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>24</td><td> Brownies - All the 4 of us could practically taste the raw egg in the brownies - and they were more like waffles than brownies.</td><td>food, ambience</td><td>0.13</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>25</td><td> And just 1/2 a spoon of ice-cream on a waffle is nothing.</td><td></td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>26</td><td> This raw egg tasting brownie is not gonna work in India - throw it away 2)</td><td>food, ambience, service</td><td>-0.23</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>27</td><td> Salad - the salad dressing and ingredients were great, but a good salad requires managing the right mix of crunchiness and softness; the lettuce had become a little too soft 3)</td><td>food, service</td><td>0.34</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>28</td><td> Pizza - good taste; can improve, but the crust (the last 0.</td><td>food, ambience, service</td><td>0.35</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>29</td><td>1 cm)</td><td></td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>30</td><td> was a struggle for my old-ish teeth as well as the pizza cutter.</td><td>service</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>31</td><td> With a softer crust I probably would have gone 4.</td><td></td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>32</td><td>5 or 5 4)</td><td></td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>33</td><td> Toppings - as the only non-veg in the group, I ordered a spicy pizza; 8 crouton sized pieces of chicken over the whole pizza just don't cut it at all; increase the price by 50% but don't skimp on the quantity of toppings.</td><td>food</td><td>-0.13</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>34</td><td> And if your menu says spicy, then it SHOULD be a little spicy 5)</td><td>food</td><td>-0.19</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>35</td><td> Soup - lovely and different taste - but a little too 'khatta' - or maybe it's just me 6)</td><td>ambience</td><td>0.10</td></tr>
+<tr><td>HungryHouse</td><td>10-06-17</td><td>36</td><td> Don't take a large group there; I think 6 is the max group size you should go with 7)</td><td></td><td>0.21</td></tr>
+<tr><td>HungryHouse</td><td>11-06-17</td><td>1</td><td>A decent fine dining restaurant but needs to work alot on the Non-Veg food...</td><td>food, service</td><td>0.29</td></tr>
+<tr><td>HungryHouse</td><td>11-06-17</td><td>2</td><td> My stop was kopper kadai , Exhibiting in their infrastructure the conservative use of aluminium in India.</td><td>service</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>11-06-17</td><td>3</td><td>  Ambience was worst.</td><td>ambience</td><td>-1.00</td></tr>
+<tr><td>HungryHouse</td><td>11-06-17</td><td>4</td><td> Don't recommend it.</td><td>service</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>11-06-17</td><td>5</td><td> music was dull and boring.</td><td>food</td><td>-0.65</td></tr>
+<tr><td>HungryHouse</td><td>11-06-17</td><td>6</td><td> I hated the service too.</td><td>service</td><td>-0.90</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>1</td><td>Ordered food yesterday in office from the place and would really appreciate their service and packing.</td><td>food, ambience, service</td><td>0.20</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>2</td><td> Their butter chicken and malai kofta are outstanding.</td><td>food</td><td>-0.05</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>3</td><td> Tandoori chicken was also good.</td><td>food, service</td><td>0.05</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>4</td><td>  A brand new entry in sector 18, Noida is Hunger Nest so thought to give it a try.</td><td>service</td><td>0.14</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>5</td><td>  We went there on sat, the restaurant is just next to the metro station so the parking is a bit of an issue but once you try their food all of this goes away.</td><td>food</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>6</td><td> Very high.</td><td></td><td>0.21</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>7</td><td> The food was not good.</td><td>food, service</td><td>-0.35</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>8</td><td> Their food quality and quantity was amazing, perfect blend of spices.</td><td>food, ambience, service</td><td>0.80</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>9</td><td> The service was also spot on.</td><td>service</td><td>0.00</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>10</td><td>  They also deliver food till midnight so I'm sure I'm gonna order food really soon!</td><td>food</td><td>0.38</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>11</td><td> Nice and very clean restaurant.</td><td></td><td>0.54</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>12</td><td> Food is decent.</td><td>food</td><td>0.17</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>13</td><td> you can tell hospitality was superb  and everyone working there was trying hard to please us!</td><td>service</td><td>0.32</td></tr>
+<tr><td>HungryHouse</td><td>12-06-17</td><td>14</td><td> Hopefully they keep up the rapport even after they get well known and busy.</td><td>service</td><td>0.10</td></tr>
+<tr><td>PizzaKing</td><td>10-06-17</td><td>1</td><td>A decent fine dining restaurant but needs to work alot on the Non-Veg food...</td><td>food, service</td><td>0.29</td></tr>
+<tr><td>PizzaKing</td><td>10-06-17</td><td>2</td><td> My stop was kopper kadai , Exhibiting in their infrastructure the conservative use of aluminium in India.</td><td>service</td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>10-06-17</td><td>3</td><td>  Ambience was bad.</td><td>ambience</td><td>-0.70</td></tr>
+<tr><td>PizzaKing</td><td>10-06-17</td><td>4</td><td> Don't recommend it.</td><td>service</td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>10-06-17</td><td>5</td><td> music was dull and boring.</td><td>food</td><td>-0.65</td></tr>
+<tr><td>PizzaKing</td><td>10-06-17</td><td>6</td><td> I loved the service too.</td><td>service</td><td>0.70</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>1</td><td>Aah!</td><td></td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>2</td><td> A place to have a good view and good food..</td><td>food, ambience, service</td><td>0.70</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>3</td><td>though a lil expensive but worth it!</td><td></td><td>-0.06</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>4</td><td> I ordered fresh juice and the famous mezze platter..</td><td>food</td><td>0.40</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>5</td><td>it was good to chill even during the day and not just at night time for parties to relax out!</td><td>food, service</td><td>0.88</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>6</td><td> Awesome place to chill on weekends, the pool is shallow so not that thing ur thinking, DJ is good, though he comes back to Bollywood as the night progresses, food little over rated, good place to book as a group.</td><td>food, ambience, service</td><td>0.31</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>7</td><td> Such a great place to be.</td><td>ambience, service</td><td>0.40</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>8</td><td> I just can never ever forget the experience me and my colleagues had at the Aqua.</td><td></td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>9</td><td> Just superb!</td><td></td><td>1.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>10</td><td> is the word to describe this place.</td><td>ambience, service</td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>11</td><td> Feel the luxury with awesome quality food at Connaught Palace The best pub...</td><td>food, ambience, service</td><td>1.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>12</td><td> poolside and all...</td><td></td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>13</td><td> looks great at night....</td><td>ambience</td><td>0.80</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>14</td><td> ambience gets full points.</td><td>ambience</td><td>0.35</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>15</td><td> There menu is also good and service is quick.</td><td>food, service</td><td>0.52</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>16</td><td> They usually arrange alot of events...</td><td></td><td>-0.25</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>17</td><td> i have been there for pool party.</td><td></td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>18</td><td> Must try is draught beer.</td><td>food</td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>19</td><td> I went there on a weekday so the place was empty.</td><td>ambience, service</td><td>-0.10</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>20</td><td> The food was average.</td><td>food</td><td>-0.15</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>21</td><td> Ambience was good.</td><td>food, ambience, service</td><td>0.70</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>22</td><td> The drinks were below average(mocktail).</td><td>food</td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>11-06-17</td><td>23</td><td> The staff was courteous.</td><td></td><td>0.60</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>1</td><td>A decent fine dining restaurant but needs to work alot on the Non-Veg food...</td><td>food, service</td><td>0.29</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>2</td><td> Atmosphere was not good.</td><td>food, ambience, service</td><td>-0.35</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>3</td><td> Don't recommend it.</td><td>service</td><td>0.00</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>4</td><td> music was dull and boring.</td><td>food</td><td>-0.65</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>5</td><td> I hated the service too.</td><td>service</td><td>-0.90</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>6</td><td> Food was great though.</td><td>food</td><td>0.80</td></tr>
+<tr><td>PizzaKing</td><td>12-06-17</td><td>7</td><td> I loved the beer.</td><td>food</td><td>0.70</td></tr>
+</tbody>
+    </table>
+  </div>
+  <div class="chart_heading">Sentiment-Score <span>Comparison</span></div>
+  <div id="chart_div"></div>
+  <div class="chart_heading">Taxonomy-wise <span>Sentiment Snapshot</span></div>
+  <select id="Ultra" onchange="run()">
+<option value="1">PizzaKing</option>
+<option value="2">HungryHouse</option>
+<option value="3">BBQ</option>
+</select><br><br>
+<div id="chart_div1"></div>
+</section>
+
+
+<!-- follow me template -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

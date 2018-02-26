@@ -1,0 +1,19 @@
+{
+  "name": "express_form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "form_server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "multer": "^1.3.0",
+    "python-shell": "^0.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "abha",
+  "license": "ISC"
+}

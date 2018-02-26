@@ -1,0 +1,32 @@
+<html>
+<head>
+
+<style>
+</style>
+<!-- <script language="javascript"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+//value = $("#x").attr('value');
+$('#x').keypress(function(){
+	value = $('#x').val();
+	$('#y').val(value);
+	
+	$('#document').contents().find('#query').val('value');
+	
+	});
+
+$('#x').click(function(){
+        $('#document').contents().find('#query').val("asd");
+    });
+});
+
+
+//document.getElementById("query").value=document.getElementById("x").value
+</script>
+</head>
+<iframe id="z" class="chatbot" src="https://console.api.ai/api-client/demo/embedded/49eb366c-8fd4-4a18-842e-2cd2b4483e10"></iframe>
+<input type="text" id="x" placeholder="Ask me something..."> 
+
+<input type="text" id="y">
+</html>
