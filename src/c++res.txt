@@ -1,7 +1,20 @@
-3.2,good at java used java swings for olympics management project 
-3.7,worked on project using spring framework
-1,i didnt work with java till now
-1,Not yet worked on this language	
-4.1,Created android app with android sdk 2.3 on api level 25
-2.5,Worked on databaae project
-3,Worked on hospital management project
+2,know basics of C and C++
+4.1,written more than 1000+ lines on code
+3.1,good
+2.5,Good
+4,I'm good at C++.
+3.5,Good command over oops
+4,Worked on a project
+3.5,Good
+3.5,Competitive Programming
+2.2,basic level
+4,Good  in writing
+4.5,Efficient in C/C++
+4.5,Used c++ for competition programming
+3.5,Excellent
+2.5,Good
+2.3,Worked on a Simple tic tac toe game
+3,I am good in c
+4,Using this in Competitive Programming Contest
+4,good
+4,Good knowledge of C++ - STL

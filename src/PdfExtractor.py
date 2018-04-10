@@ -60,5 +60,5 @@ class PdfExtractor:
         # #We create a list comprehension which only returns a list of words #that are NOT IN stop_words and NOT IN punctuations.
         #
         # keywords = [word for word in tokens if not word in stop_words and  not word in string.punctuation]
-        print text
+        # print text
         return text
