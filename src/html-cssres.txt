@@ -1,0 +1,19 @@
+4,made a website with these technologies
+2.7,developed a simple webpage
+1,didnt do till now
+0,Not on this either	
+3,Implemented css on my website	
+2,Average
+4.5,Designed whole website on html/css
+3,Started developing UI for a project
+4.5,Efficient in front-end design, JavaScript, HTML, CSS, Materialize, Bootstrap	
+4.5,Good hand on front end , still working for polishing myself
+1,Beginner
+2,Used html/css in lab programs
+3,Very Good	
+2,Good
+4.5,Made my own portfolio. I am very good at it. Also very good at javascript & jquery .
+3.5,Familiar with many of tags used	
+3,Used these in making my blog page	
+0,Nothing
+2.5,Good at basic HTML

@@ -1,0 +1,19 @@
+3.5,worked with SQL Server and SQL Developer
+3.5,used MySQl MongoDb Average at queries
+4.5,very very good
+2,Good	
+2.2,Good knowledge for database queries	
+1.5,Average in SQL
+3.5,Whole database in sql
+3,Worked on sql and nosql databases
+4.2,MySql SQL Oracle 11g Express
+2.5,can work on it but face little difficulty
+1,Beginner
+2.7,Used Oracle for a project
+2.2,Good	
+1.5,Fair
+1,Just Our teacher assignments 
+3.2,Learnt  mysql well	
+2,Just started going deep in this aspect.	
+0,Nothing
+3.5,MySql Oracle 11g XE 

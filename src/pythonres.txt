@@ -1,0 +1,16 @@
+2,learning python
+3.2,worked on projects using numPy os module and written many scripts
+3,more than good
+1,Not worked on this either	
+3,Good knowledge of python
+1,Just a beginner
+2.8,Worked on a web-based project in python	
+1,No with python yet
+3.5,Worked on Python projects
+3.9,Did project using python, used for web scraping
+2,Good	
+0,Bad	
+2.5,Good
+2,Tried it sometimes during Contests	
+0,Nothing
+4,Project BlindCode Good 

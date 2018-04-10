@@ -1,0 +1,20 @@
+3.2,good at java, used java swings for olympics management project 
+3.7,worked on project using spring framework
+1,i didnt work with java till now
+1,Not yet worked on this language	
+4.1,Created android app with android sdk 2.3 on api level 25
+2.5,Worked on databaae project
+3,Worked on hospital management project 
+3.3,Skills are pretty good and I'm still working on improving my skill
+3,Worked on online recruitment portal
+3.5,worked on a project and used spring framework
+2.5,worked on "generic rule engine(core java)"	
+3,Working on a project using java in backend and front end with html ,CSS , bootstrap and JavaScript
+2,Intermediate in Java	
+2.5,Good
+3,Work on voting system project , also basic snake game , using cmd	
+3,Java to build Android apps	
+2.5,intermediate in  java	
+1,Haven't  tried it much at competitive level yet.	
+0,Nothing
+4,Projects Proxytracker attendance tracking website  used JSP Servlets.
